@@ -1,51 +1,38 @@
-export default function HomePage() {
+// src/app/layout.tsx
+import type { Metadata } from "next";
+import "./globals.css";
+import Header from "@/components/Header";
+
+export const metadata: Metadata = {
+  title: "HISAIZU CREATORS BANK",
+  description: "HISAIZU ART PROJECT / Creators & Vendors Bank",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <section className="py-10 md:py-20">
-      <div className="mx-auto max-w-3xl text-center px-4">
-        <p className="text-xs tracking-widest text-slate-500 mb-3">
-          HISAIZU ART PROJECT
-        </p>
+    <html lang="ja">
+      <body className="min-h-screen bg-slate-50 text-slate-900">
+        <div className="flex min-h-screen flex-col">
+          <Header />
 
-        <h1 className="
-          text-2xl
-          md:text-4xl
-          font-semibold
-          leading-snug
-          md:leading-tight
-          text-slate-900
-          mb-6
-        ">
-          HISAIZU CREATORS BANK
-        </h1>
+          <main className="flex-1">
+            <div className="mx-auto max-w-5xl px-4 py-8 md:py-12">
+              {children}
+            </div>
+          </main>
 
-        <p className="
-          text-sm
-          md:text-base
-          leading-relaxed
-          text-slate-600
-          mb-8
-        ">
-          久伊豆神社を拠点に、ART / CRAFT / SOUND / VENDOR / MORIBITO が交差する
-          クリエイターの母艦。作品・音・手仕事・キッチンカーまで、
-          まちの「つくる人」をここに集約し、企画と未来につないでいきます。
-        </p>
-
-        <div className="flex flex-col md:flex-row gap-4 justify-center">
-          <a
-            href="/register"
-            className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white hover:bg-slate-800"
-          >
-            BANKに登録する
-          </a>
-
-          <a
-            href="/creators"
-            className="rounded-full border border-slate-300 px-6 py-3 text-sm text-slate-700 hover:bg-slate-100"
-          >
-            登録メンバーを見る
-          </a>
+          <footer className="border-t border-slate-200 bg-white">
+            <div className="mx-auto max-w-5xl px-4 py-3 text-xs text-slate-500 flex flex-col gap-1 md:flex-row md:justify-between">
+              <span>© {new Date().getFullYear()} HISAIZU ART PROJECT</span>
+              <span>久伊豆神社 発・クリエイター母艦</span>
+            </div>
+          </footer>
         </div>
-      </div>
-    </section>
+      </body>
+    </html>
   );
 }
